@@ -1,4 +1,9 @@
 # DRLVIS - Visualising Deep Reinforcement Learning
+<object data="images/drlvis-overview.pdf" type="aplication/pdf" width="100%"></object>
+
+Created by [Marios Sirtmatsis](https://mariossirtmatsis.com) with the support of [Alex Bäuerle](https://a13x.io/).
+
+
 DRLVis is an application used for visualising deep reinforcement learning. The goal is to enable developers to get a further understanding of broadly used algorithms across the deep reinforcement learning landscape. Also DRLVis shall provide a tool for researchers and developers to help them understand errors in their implemented algorithms.
 
 
@@ -9,14 +14,14 @@ DRLVis is an application used for visualising deep reinforcement learning. The g
 3. Open your browser on http://localhost:8000
 
 
-
-## Architecture
+## Implementation
+### Architecture
 The application is split into a backend and a fronted, while the backend does most of the data preprocessing and the frontend provides meaningful visualisations for further understanding of what the agent is doing, how rewards, weight and actions develop over time and how confident the agent is in selecting its actions.
 
-## Backend
+### Backend
 The backend mainly does different preprocessing on a generated log file. This is mostly based on the tensorflow SummaryWriter and its corresponding handling through tensorboard.
 
-## Frontend
+### Frontend
 The starting point in the frontend is an overview containing five different charts and a video. These visualisations are seperated into two areas based on the detail they provide. On the left side
 one can see the **Episode Return Chart** and the **Action Divergence Chart**. The Episode Return Chart, provides the accumulated rewards per episode, while the Action divergence Chart shows the [Kullback-Leibler-Divergence](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained) between action probabilities predicted by the agent and collected for every timestep per episode. (this is based on TRPO -> refs follow) For changing the currently displayed episode, one can simply click on a data point in the Episode Returns or the Action Divergence Chart. It is also possible to select an episode by simply typing in a number right next to the **Selected Episode** Heading.
 
