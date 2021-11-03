@@ -1,6 +1,9 @@
 # DRLVIS - Visualising Deep Reinforcement Learning
-<object data="images/drlvis-overview.pdf" type="aplication/pdf" width="100%"></object>
+<img src="images/drlvis-overview.png"/>
 
+
+
+\
 Created by [Marios Sirtmatsis](https://mariossirtmatsis.com) with the support of [Alex Bäuerle](https://a13x.io/).
 
 
@@ -16,30 +19,19 @@ DRLVis is an application used for visualising deep reinforcement learning. The g
 
 ## Implementation
 ### Architecture
-The application is split into a backend and a fronted, while the backend does most of the data preprocessing and the frontend provides meaningful visualisations for further understanding of what the agent is doing, how rewards, weight and actions develop over time and how confident the agent is in selecting its actions.
+<img src="images/architecture_drlvis.png"/>
 
-### Backend
-The backend mainly does different preprocessing on a generated log file. This is mostly based on the tensorflow SummaryWriter and its corresponding handling through tensorboard.
-
-### Frontend
-The starting point in the frontend is an overview containing five different charts and a video. These visualisations are seperated into two areas based on the detail they provide. On the left side
-one can see the **Episode Return Chart** and the **Action Divergence Chart**. The Episode Return Chart, provides the accumulated rewards per episode, while the Action divergence Chart shows the [Kullback-Leibler-Divergence](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained) between action probabilities predicted by the agent and collected for every timestep per episode. (this is based on TRPO -> refs follow) For changing the currently displayed episode, one can simply click on a data point in the Episode Returns or the Action Divergence Chart. It is also possible to select an episode by simply typing in a number right next to the **Selected Episode** Heading.
+The application is split into a backend and a fronted, where the backend does most of the data preprocessing. The frontend provides meaningful visualisations for further understanding of what the agent is doing, how rewards, weights and actions develop over time and how confident the agent is in selecting its actions.
 
 
-<img src="assets/drlvis-overview.png"/>
-When selecting the dropdown menu on the upper left corner, one can change the views and get to the experimental view. This visualisation shows an experiment, where random states are being generated and the
-agent's confidence in selecting a particular action in a particular state is being evaluated.
-
-
-<img src="assets/experimental.png"/>
-
-
-
-
+## Workflow for using DRLVis
+1. Train agent and log data
+2. Run drlvis
+3. Interpret meaningful visualisations in your browser 
 
 ## Logging
 Logging for the use of drlvis is done by `logger.py`. The file contains a documentation on which values should be passed for logging.
-Th`logger.py` contains an individual function for every loggable value/values. Those functions are: 
+Th`logger.py` contains an individual function for every loggable value/values. Some (the most important) of these functions are:
 
 
 
@@ -54,9 +46,15 @@ The `create_logger()` function has to be used for initializing the logger and sp
 <br/>
 
 ```python
-def log_episode_return(episode_return, episode_count, description)
+def log_episode_return(episode_return, episode_count)
 ```
 With `log_episode_return()` one is able to log the accumulated reward per episode, with the step being the curresponding current episode count.
+
+<br/>
+```python
+def log_action_divergence(action_probs, action_probs_old, episode_count, apply_softmax )
+```
+With `log_action_divergence()` one can calculate the divergence between actions in the current episode and actions in the last episode. Therefore the action_probabilities for each observation per timestep in an episode has to be collected. In the end of an episode this collection of action probabilites and the collection from the episode before can be passed to the `log_action_divergence()` method, which then calculates the kl divergence between action probabilities of the last episode and the current episode. Example code snippet with a model with softmax activation in the last layer:
 
 <br/>
 
@@ -67,10 +65,6 @@ Using `log_frame()` one can log the frame which is currently being observed, or 
 
 <br/>
 
-```python
-def log_action_divergence(action_probs, action_probs_old, episode_count, apply_softmax )
-```
-With `log_action_divergence()` one can calculate the divergence between actions in the current episode and actions in the last episode. Therefore the action_probabilities for each observation per timestep in an episode has to be collected. In the end of an episode this collection of action probabilites and the collection from the episode before can be passed to the `log_action_divergence()` method, which then calculates the kl divergence between action probabilities of the last episode and the current episode. Example code snippet with a model with softmax activation in the last layer:
 
 ```python
 from drlvis import logger
@@ -148,7 +142,14 @@ logger.log_weights(weight_tensor=weights, step=timestep ,episode_count=episode)
 
 <br/>
 
-```python
-def log_action_meanings(action_meanings)
-```
-Before training the agent, one can use `log_action_meanings()`to log the meanings of actions that can be passed to the environment. This is just a list/np.array with action names for increased verbosity in the frotend.
+
+
+## Examples
+Examples on how to use them in real implementations can be found in the examples folder that contains simple cartpole implementation in ```dqn_cartpole.ipynb``` and a more complex DQN implementation for playing Atari Breakout in ```dqn/```
+
+
+## Bachelor Thesis
+For further information on how to use DRLVis and details about the application, I refer to my bachelor thesis located at ```documents/bachelor_thesis_visdrl.pdf```.
+
+## License
+[MIT](https://opensource.org/licenses/MIT)
