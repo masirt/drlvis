@@ -51,6 +51,7 @@ def log_episode_return(episode_return, episode_count)
 With `log_episode_return()` one is able to log the accumulated reward per episode, with the step being the curresponding current episode count.
 
 <br/>
+
 ```python
 def log_action_divergence(action_probs, action_probs_old, episode_count, apply_softmax )
 ```
