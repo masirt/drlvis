@@ -146,7 +146,7 @@ logger.log_weights(weight_tensor=weights, step=timestep ,episode_count=episode)
 
 
 ## Examples
-Examples on how to use them in real implementations can be found in the examples folder that contains simple cartpole implementation in ```dqn_cartpole.ipynb``` and a more complex DQN implementation for playing Atari Breakout in ```dqn/```
+Examples on how to use them in real implementations can be found in the examples folder that contains simple cartpole implementation in ```dqn_cartpole.ipynb``` and a more complex DQN implementation for playing Atari Breakout in ```dqn/```.
 
 
 ## Bachelor Thesis
