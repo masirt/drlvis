@@ -150,7 +150,7 @@ Examples on how to use them in real implementations can be found in the examples
 
 
 ## Bachelor Thesis
-For further information on how to use DRLVis and details about the application, I refer to my bachelor thesis located at ```documents/bachelor_thesis_visdrl.pdf```.
+For further information on how to use DRLVis and details about the application, I refer to my bachelor thesis located at <a href=documents/bachelor_thesis_visdrl.pdf>```documents/bachelor_thesis_visdrl.pdf```</a>.
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)
