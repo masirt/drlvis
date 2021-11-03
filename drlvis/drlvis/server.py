@@ -53,7 +53,7 @@ def main():
 
 def run_http_server():
     this_dir, _ = os.path.split(__file__)
-    os.system("cd "+this_dir+"/frontend ; python3 -m http.server 8000")
+    os.system("cd "+this_dir+"/frontend ; python3 -m http.server --bind 127.0.0.1 8000")
 
 
 def run_flask_server(args):
