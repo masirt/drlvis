@@ -1,0 +1,52 @@
+{
+  "name": "drlvis",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@types/d3": "^6.3.0",
+    "bootstrap-vue": "^2.21.2",
+    "core-js": "^3.10.2",
+    "d3": "^6.7.0",
+    "d3-simple-slider": "^1.10.4",
+    "d3.js": "0.0.2-security",
+    "mathjs": "^9.3.2",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-promise-dialogs": "^1.0.2",
+    "vue-property-decorator": "^9.1.2",
+    "vue-router": "^3.5.1",
+    "vuetify": "^2.4.11",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@types/d3-simple-slider": "^1.5.1",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "@vue/cli-plugin-babel": "^4.5.12",
+    "@vue/cli-plugin-eslint": "^4.5.12",
+    "@vue/cli-plugin-router": "^4.5.12",
+    "@vue/cli-plugin-typescript": "^4.5.12",
+    "@vue/cli-plugin-vuex": "^4.5.12",
+    "@vue/cli-service": "^4.5.12",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "eslint": "^7.24.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "node-sass": "^5.0.0",
+    "prettier": "^2.2.1",
+    "sass": "^1.32.11",
+    "sass-loader": "^10",
+    "typescript": "^4.2.4",
+    "vue-cli-plugin-vuetify": "~2.3.1",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.7.2",
+    "vuex-class": "^0.3.2",
+    "vuex-module-decorators": "^1.0.1"
+  }
+}
